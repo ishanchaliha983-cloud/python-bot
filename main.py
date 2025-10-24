@@ -3,16 +3,16 @@ import json
 import telebot
 
 ##TOKEN DETAILS
-TOKEN = "TRON"
+TOKEN = "UPI"
 
-BOT_TOKEN = "5710284858:AAHcIDYAtWAC01p8BsHRl4cIwhcKpBqNlTQ"
-PAYMENT_CHANNEL = "@testpostchnl" #add payment channel here including the '@' sign
-OWNER_ID = 5151868182 #write owner's user id here.. get it from @MissRose_Bot by /id
-CHANNELS = ["@testpostchnl"] #add channels to be checked here in the format - ["Channel 1", "Channel 2"] 
+BOT_TOKEN = "8389690731:AAGN5emvZKBXUHJ2lp4b8lQMSk9yYEsJCuw"
+PAYMENT_CHANNEL = "@joinmychanml92" #add payment channel here including the '@' sign
+OWNER_ID = 5699004323 #write owner's user id here.. get it from @MissRose_Bot by /id
+CHANNELS = ["@joinmychanml92"] #add channels to be checked here in the format - ["Channel 1", "Channel 2"] 
               #you can add as many channels here and also add the '@' sign before channel username
-Daily_bonus = 1 #Put daily bonus amount here!
-Mini_Withdraw = 0.5  #remove 0 and add the minimum withdraw u want to set
-Per_Refer = 0.0001 #add per refer bonus here
+Daily_bonus = 0.5 #Put daily bonus amount here!
+Mini_Withdraw = 20  #remove 0 and add the minimum withdraw u want to set
+Per_Refer = 2.50 #add per refer bonus here
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -206,10 +206,10 @@ def send_text(message):
 
         keyboard = telebot.types.ReplyKeyboardMarkup(True)
         keyboard.row('🚫 Cancel')
-        send = bot.send_message(message.chat.id, "_⚠️Send your TRX Wallet Address._",
+        send = bot.send_message(message.chat.id, "_⚠️Send your Upi Wallet Address._",
                                 parse_mode="Markdown", reply_markup=keyboard)
         # Next message will call the name_handler function
-        bot.register_next_step_handler(message, trx_address)
+        bot.register_next_step_handler(message, Uqpi_address)
     if message.text == "🎁 Bonus":
         user_id = message.chat.id
         user = str(user_id)
@@ -276,13 +276,13 @@ def trx_address(message):
         data = json.load(open('users.json', 'r'))
         data['wallet'][user] = message.text
 
-        bot.send_message(message.chat.id, "*💹Your Trx wallet set to " +
+        bot.send_message(message.chat.id, "*💹Your Upi wallet set to " +
                          data['wallet'][user]+"*", parse_mode="Markdown")
         json.dump(data, open('users.json', 'w'))
         return menu(message.chat.id)
     else:
         bot.send_message(
-            message.chat.id, "*⚠️ It's Not a Valid Trx Address!*", parse_mode="Markdown")
+            message.chat.id, "*⚠️ It's Not a Valid Upi Address!*", parse_mode="Markdown")
         return menu(message.chat.id)
    except:
         bot.send_message(message.chat.id, "This command having error pls wait for ficing the glitch by admin")
