@@ -154,7 +154,7 @@ def query_handler(call):
             markup = telebot.types.InlineKeyboardMarkup()
             markup.add(telebot.types.InlineKeyboardButton(
                 text='🤼‍♂️ Joined', callback_data='check'))
-            msg_start = "*🍔 To Use This Bot You Need To Join This Channel - \n➡️ @ Fill your channels at line: 101 and 157*"
+            msg_start = "*✅ To Use This Bot You Need To Join This Channel - \n➡️ @ Fill your channels at line: 101 and 157*"
             bot.send_message(call.message.chat.id, msg_start,
                              parse_mode="Markdown", reply_markup=markup)
    except:
@@ -209,7 +209,7 @@ def send_text(message):
         send = bot.send_message(message.chat.id, "_⚠️Send your Upi Wallet Address._",
                                 parse_mode="Markdown", reply_markup=keyboard)
         # Next message will call the name_handler function
-        bot.register_next_step_handler(message, Uqpi_address)
+        bot.register_next_step_handler(message, Upi_address)
     if message.text == "🎁 Bonus":
         user_id = message.chat.id
         user = str(user_id)
@@ -266,7 +266,7 @@ def send_text(message):
         bot.send_message(OWNER_ID, "Your bot got an error fix it fast!\n Error on command: "+message.text)
         return
 
-def trx_address(message):
+def Upi_address(message):
    try:
     if message.text == "🚫 Cancel":
         return menu(message.chat.id)
