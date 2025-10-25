@@ -200,9 +200,7 @@ def send_text(message):
             bot_name, message.chat.id)
         msg = ref_msg.format(ref_count, Per_Refer, TOKEN, ref_link)
         bot.send_message(message.chat.id, msg, parse_mode="Markdown")
-    if message.text == "⚙️ Set Wallet":
-        user_id = message.chat.id
-        user = str(user_id)
+  
 
         keyboard = telebot.types.ReplyKeyboardMarkup(True)
         keyboard.row('🚫 Cancel')
@@ -261,15 +259,11 @@ def send_text(message):
             bot.send_message(
                 user_id, f"_❌Your balance low you should have at least {Mini_Withdraw} {TOKEN} to Withdraw_", parse_mode="Markdown")
             return
-   except:
-        bot.send_message(message.chat.id, "This command having error pls wait for ficing the glitch by admin")
-        bot.send_message(OWNER_ID, "Your bot got an error fix it fast!\n Error on command: "+message.text)
-        return
-
+   
 def Upi_address(message):
    try:
     if message.text == "🚫 Cancel":
-        return menu(message.chat.id)
+       return menu(message.chat.id)
     if len(message.text) == 34:
         user_id = message.chat.id
         user = str(user_id)
